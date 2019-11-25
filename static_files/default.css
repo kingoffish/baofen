@@ -1,0 +1,8 @@
+@charset "utf-8";
+/*默认颜色*/
+#floatDivBoxs{background:#fff;}
+#floatDivBoxs .floatDtt{background:#f08326;color:#fff;}
+#floatDivBoxs .floatDtxt p{ color: #F08326;}
+#floatDivBoxs .floatDbg{background:url(/static/img/sidenav/pc/theme1/online_botbg.jpg) no-repeat;}
+.floatShadow{ background:#fff; }
+#rightArrow{ background:url(/static/img/sidenav/pc/theme1/online_arrow.jpg) no-repeat; } 

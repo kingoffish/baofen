@@ -1,0 +1,21 @@
+#floatDivBoxs{width:170px; position:fixed;top:100px;right:0px;z-index:99999;}
+#floatDivBoxs .floatDtt{width:100%;height:45px;line-height:45px; font-size:18px;text-indent:22px;position:relative;}
+#floatDivBoxs .floatDqq{padding:0px; margin:0;}
+#floatDivBoxs .floatDqq li{width:130px;height:45px;line-height:45px;font-size:15px;border-bottom:1px solid #e3e3e3;overflow:hidden;}
+#floatDivBoxs .floatDqq img{width:30px; height:30px;}
+#floatDivBoxs .floatDtxt{position:relative;font-size:18px;color:#333;padding:10px 14px;}
+#floatDivBoxs .floatDtxt img{ width:30px; height:30px; }
+#floatDivBoxs .floatDtel{padding:0 0 10px 10px;}
+#floatDivBoxs .floatDtel img{display:block; width:30px; height:30px; }
+#floatDivBoxs .floatDtxt p{ font-size: 18px; }
+#floatDivBoxs .floatDbg{width:100%;height:20px; box-shadow:-2px 0 3px rgba(0,0,0,0.25);}
+.floatShadow{ background:#fff;box-shadow:-2px 0 3px rgba(0,0,0,0.25);}
+#rightArrow{width:50px;height:45px; position:fixed;top:100px;right:170px;z-index:99999;}
+#rightArrow a{display:block;height:45px;}
+#floatDivBoxs .sideNav4_wx_pic {width:106px; height:106px;}
+#floatDivBoxs .floatDtxt .izl_rmenu_pic{display:none; left:-150px; top:0px; }
+#floatDivBoxs .floatDtxt .izl_rmenu_pic img{position:absolute; left:-150px; top:0px; width:150px;height:150px;}
+
+#floatDivBoxs .floatDtxt .izl_rmenu_kf{display:none;position:absolute; left:-138px; top:0px; background:#fff; border: 4px solid #e3e3e3; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+#floatDivBoxs .floatDtxt .izl_rmenu_kf a{padding:0 14px; }
+#floatDivBoxs .floatDtxt .izl_rmenu_kf img{ width:20px; height:20px;}
