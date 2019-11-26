@@ -21,13 +21,38 @@ class IndexController extends Controller
         foreach ($show_type as $item){
             $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
         }
-//        dump($config);die;
+
         $this->assign('config', $config);
         $this->display();
     }
 
-    public function index2()
+    /**
+     * @desc : 获取配置项目
+     * @author: wangxiaoning@botpy.com
+     * @date  : 2019-11-26.15:34
+     */
+
+    public function SY5uVsuZB()
     {
-        var_dump(222);
+        $config = M('config')->select();
+        $return_data = [];
+        foreach ($config as $item){
+            $return_data[$item['type']][] = $item;
+        }
+
+        $this->assign('config', $return_data);
+        $this->display();
+    }
+
+
+    /**
+     * @desc : 更新配置项目
+     * @author: wangxiaoning@botpy.com
+     * @date  : 2019-11-26.15:34
+     */
+
+    public function IbTjazNOh()
+    {
+
     }
 }
