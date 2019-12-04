@@ -187,7 +187,7 @@
                                 <thead>
                                 <tr class="bg-light">
                                     <th class="border-top-0">文章标题</th>
-                                    <th class="border-top-0">文章链接</th>
+                                    <!--                                    <th class="border-top-0">文章标题</th>-->
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
@@ -195,9 +195,9 @@
                                 <!--app-->
                                 <?php foreach ($content as $app) { ?>
                                 <tr>
-                                    <td><input type="text" value="<?php echo $app['title']?>" class="form-control form-control-line" readonly></td>
-                                    <td><input type="text" value="<?php echo $app['url']?>" class="form-control form-control-line" readonly></td>
-                                    <td><a href="<?php echo $app['path']?>">查看</a></td>
+                                    <td><?php echo $app['title']?></td>
+                                    <!--                                    <td><input type="text" value="<?php echo $app['url']?>" class="form-control form-control-line" readonly></td>-->
+                                    <td><a href="<?php echo $app['url']?>" target="_blank">查看</a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -245,7 +245,7 @@
 
 
                             function update(id,tagid) {
-                               tagInfo =  document.getElementById(tagid)
+                                tagInfo =  document.getElementById(tagid)
 
                                 switch (tagid) {
                                     case 'logo':
@@ -265,16 +265,16 @@
                                     success: function(data){
                                         alert("更新成功")
                                     },
-                                     error:function(e){
-                                         console.log(e);
-                                     }
-                            });
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
                             }
 
 
 
                         </script>
-<!--                        开始-->
+                        <!--                        开始-->
                         <div class="card-body">
                             <!-- title -->
                             <div class="d-md-flex align-items-center">
@@ -289,7 +289,7 @@
                                 <thead>
                                 <tr class="bg-light">
                                     <th class="border-top-0">描述</th>
-                                    <th class="border-top-0">文章链接</th>
+                                    <th class="border-top-0">文章标题</th>
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
@@ -297,15 +297,46 @@
                                 <!--app-->
                                 <?php foreach ($config['app'] as $app) { ?>
                                 <tr>
-                                    <td><input type="text" value="<?php echo $app['name_ch']?>" class="form-control form-control-line"></td>
-                                    <td><input type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
-                                    <td><a href="">更新</a></td>
+                                    <td><input id="<?php echo 'app_name'.$app['id']?>" type="text" value="<?php echo $app['name_ch']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'app_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
+                                    <td><a onclick="updateapp(this.id)" id="<?php echo 'app_id'.$app['id'] ?>">更新</a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
                         </div>
-<!--                        end-->
+
+                        <script>
+
+                            function updateapp(id) {
+                                id = id.replace('app_id','')
+                                app_name =  document.getElementById('app_name'+id)
+                                app_path =  document.getElementById('app_path'+id)
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/index/IbTjazNOh",
+                                    data: {
+                                        id:id,
+                                        name_ch:app_name.value,
+                                        path:app_path.value
+                                    },
+                                    dataType: "json",
+                                    success: function(data){
+                                        alert("更新成功")
+                                    },
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
+                            }
+
+
+
+                        </script>
+
+
+                        <!--                        end-->
                         <div class="card-body">
                             <!-- title -->
                             <div class="d-md-flex align-items-center">
@@ -320,7 +351,7 @@
                                 <thead>
                                 <tr class="bg-light">
                                     <th class="border-top-0">描述</th>
-                                    <th class="border-top-0">文章链接</th>
+                                    <th class="border-top-0">图片地址</th>
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
@@ -329,13 +360,41 @@
                                 <?php foreach ($config['index_image'] as $app) { ?>
                                 <tr>
                                     <td><?php echo $app['name_ch']?></td>
-                                    <td><input type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
-                                    <td><a href="">更新</a></td>
+                                    <td><input id="<?php echo 'i_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
+                                    <td><a onclick="updatei(this.id)" id="<?php echo 'i'.$app['id'] ?>">更新</a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
                         </div>
+
+                        <script>
+
+                            function updatei(id) {
+                                id = id.replace('i','')
+                                i_path =  document.getElementById('i_path'+id)
+
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/index/IbTjazNOh",
+                                    data: {
+                                        id:id,
+                                        path:i_path.value,
+                                    },
+                                    dataType: "json",
+                                    success: function(data){
+                                        alert("更新成功")
+                                    },
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
+                            }
+
+
+
+                        </script>
 
 
 
@@ -355,7 +414,7 @@
                                     <th class="border-top-0">描述</th>
                                     <th class="border-top-0">文章短标题</th>
                                     <th class="border-top-0">文章封面图</th>
-                                    <th class="border-top-0">文章链接</th>
+                                    <th class="border-top-0">文章标题</th>
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
@@ -364,16 +423,45 @@
                                 <?php foreach ($config['roll_article'] as $app) { ?>
                                 <tr>
                                     <td><?php echo $app['name_ch']?></td>
-                                    <td><input type="text" value="<?php echo $app['short_title']?>" class="form-control form-control-line"></td>
-                                    <td><input type="text" value="<?php echo $app['image_path']?>" class="form-control form-control-line"></td>
-                                    <td><input type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
-                                    <td><a href="">更新</a></td>
+                                    <td><input id="<?php echo 'h_title'.$app['id']?>" type="text" value="<?php echo $app['short_title']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'h_image'.$app['id']?>" type="text" value="<?php echo $app['image_path']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'h_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
+                                    <td><a onclick="updateh(this.id)" id="<?php echo 'h'.$app['id'] ?>">更新</a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
                         </div>
+                        <script>
 
+                            function updateh(id) {
+                                id = id.replace('h','')
+                                h_title =  document.getElementById('h_title'+id)
+                                h_image =  document.getElementById('h_image'+id)
+                                h_path =  document.getElementById('h_path'+id)
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/index/IbTjazNOh",
+                                    data: {
+                                        id:id,
+                                        short_title:h_title.value,
+                                        image_path:h_image.value,
+                                        path:h_path.value,
+                                    },
+                                    dataType: "json",
+                                    success: function(data){
+                                        alert("更新成功")
+                                    },
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
+                            }
+
+
+
+                        </script>
 
                         <div class="card-body">
                             <!-- title -->
@@ -391,7 +479,7 @@
                                     <th class="border-top-0">描述</th>
                                     <th class="border-top-0">文章短标题</th>
                                     <th class="border-top-0">文章封面图</th>
-                                    <th class="border-top-0">文章链接</th>
+                                    <th class="border-top-0">文章标题</th>
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
@@ -400,20 +488,46 @@
                                 <?php foreach ($config['f1_article'] as $app) { ?>
                                 <tr>
                                     <td><?php echo $app['name_ch']?></td>
-                                    <td><input type="text" value="<?php echo $app['short_title']?>" class="form-control form-control-line"></td>
-                                    <td><input type="text" value="<?php echo $app['image_path']?>" class="form-control form-control-line"></td>
-                                    <td><input type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
-                                    <td><a href="">更新</a></td>
+                                    <td><input id="<?php echo 'a_title'.$app['id']?>" type="text" value="<?php echo $app['short_title']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'a_image'.$app['id']?>" type="text" value="<?php echo $app['image_path']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'a_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
+                                    <td><a onclick="updatea(this.id)" id="<?php echo 'a'.$app['id'] ?>">更新</a></td>
+
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
                         </div>
+                        <script>
+
+                            function updatea(id) {
+                                id = id.replace('a','')
+                                h_title =  document.getElementById('a_title'+id)
+                                h_image =  document.getElementById('a_image'+id)
+                                h_path =  document.getElementById('a_path'+id)
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/index/IbTjazNOh",
+                                    data: {
+                                        id:id,
+                                        short_title:h_title.value,
+                                        image_path:h_image.value,
+                                        path:h_path.value,
+                                    },
+                                    dataType: "json",
+                                    success: function(data){
+                                        alert("更新成功")
+                                    },
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
+                            }
 
 
 
-
-
+                        </script>
 
                     </div>
                 </div>

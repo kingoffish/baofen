@@ -35,7 +35,13 @@ class IndexController extends Controller
 
     public function item(){
 
-        $article = file_get_contents('http://140.143.224.94:8080/index.php/archives/4/');
+        $article_id = $_REQUEST['s'];
+
+        if(empty($article_id)){
+            $this->index();
+        }
+
+        $article = file_get_contents("http://140.143.224.94:8080/index.php/archives/{$article_id}/");
         $regex4="/<div class=\"post-content\".*?>.*?<\/div>/ism";
 
 
@@ -71,7 +77,7 @@ class IndexController extends Controller
         $content = M('contents')->where(['type' => 'post'])->select();
 
         foreach ($content as &$item){
-            $item['url'] = 111;
+            $item['url'] = "http://140.143.224.94:8080/index.php/archives/{$item['cid']}/";
         }
 
         $this->assign('content', $content);
