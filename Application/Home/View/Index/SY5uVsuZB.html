@@ -335,13 +335,11 @@
 
                         </script>
 
-
-                        <!--                        end-->
                         <div class="card-body">
                             <!-- title -->
                             <div class="d-md-flex align-items-center">
                                 <div>
-                                    <h4 class="card-title">轮播图地址</h4>
+                                    <h4 class="card-title">首页App</h4>
                                 </div>
                             </div>
                             <!-- title -->
@@ -351,22 +349,84 @@
                                 <thead>
                                 <tr class="bg-light">
                                     <th class="border-top-0">描述</th>
-                                    <th class="border-top-0">图片地址</th>
+                                    <th class="border-top-0">文章标题</th>
                                     <th class="border-top-0">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!--app-->
-                                <?php foreach ($config['index_image'] as $app) { ?>
+                                <?php foreach ($config['leimu'] as $app) { ?>
                                 <tr>
-                                    <td><?php echo $app['name_ch']?></td>
-                                    <td><input id="<?php echo 'i_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
-                                    <td><a onclick="updatei(this.id)" id="<?php echo 'i'.$app['id'] ?>">更新</a></td>
+                                    <td><input id="<?php echo 'l_ch'.$app['id']?>" type="text" value="<?php echo $app['name_ch']?>" class="form-control form-control-line"></td>
+                                    <td><input id="<?php echo 'l_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>
+                                    <td><a onclick="updatel(this.id)" id="<?php echo 'l'.$app['id'] ?>">更新</a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
                         </div>
+
+                        <script>
+
+                            function updatel(id) {
+                                id = id.replace('l','')
+                                l_ch =  document.getElementById('l_ch'+id)
+                                l_path =  document.getElementById('l_path'+id)
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/index/IbTjazNOh",
+                                    data: {
+                                        id:id,
+                                        name_ch:l_ch.value,
+                                        path:l_path.value
+                                    },
+                                    dataType: "json",
+                                    success: function(data){
+                                        alert("更新成功")
+                                    },
+                                    error:function(e){
+                                        console.log(e);
+                                    }
+                                });
+                            }
+
+
+
+                        </script>
+
+
+                        <!--                        end-->
+<!--                        <div class="card-body">-->
+<!--                            &lt;!&ndash; title &ndash;&gt;-->
+<!--                            <div class="d-md-flex align-items-center">-->
+<!--                                <div>-->
+<!--                                    <h4 class="card-title">轮播图地址</h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; title &ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="table-responsive">-->
+<!--                            <table class="table v-middle">-->
+<!--                                <thead>-->
+<!--                                <tr class="bg-light">-->
+<!--                                    <th class="border-top-0">描述</th>-->
+<!--                                    <th class="border-top-0">图片地址</th>-->
+<!--                                    <th class="border-top-0">操作</th>-->
+<!--                                </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                &lt;!&ndash;app&ndash;&gt;-->
+<!--                                <?php foreach ($config['index_image'] as $app) { ?>-->
+<!--                                <tr>-->
+<!--                                    <td><?php echo $app['name_ch']?></td>-->
+<!--                                    <td><input id="<?php echo 'i_path'.$app['id']?>" type="text" value="<?php echo $app['path']?>" class="form-control form-control-line"></td>-->
+<!--                                    <td><a onclick="updatei(this.id)" id="<?php echo 'i'.$app['id'] ?>">更新</a></td>-->
+<!--                                </tr>-->
+<!--                                <?php } ?>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
 
                         <script>
 
@@ -395,8 +455,6 @@
 
 
                         </script>
-
-
 
                         <div class="card-body">
                             <!-- title -->

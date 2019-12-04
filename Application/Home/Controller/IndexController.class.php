@@ -21,6 +21,13 @@ class IndexController extends Controller
         $config = [];
         foreach ($this->show_type as $item){
             $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
+
+            if(in_array($item['type'],['leimu','f1_article','roll_article'])){
+                foreach ($config[$item['type']] as &$item){
+                    $item['a_id'] =  M('contents')->where(['title'=>$item['path']])->find()['cid'];
+                    $item['path'] = "http://140.143.224.94/home/index/item/s/{$item['a_id']}/";
+                }
+            }
         }
 
         $this->assign('config', $config);
