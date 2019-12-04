@@ -39,7 +39,14 @@ class IndexController extends Controller
         foreach ($this->show_type as $item){
             $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
         }
-//        dump($config);die;
+
+        $content = M('contents')->select();
+
+        foreach ($content as &$item){
+            $item['url'] = 111;
+        }
+
+        $this->assign('content', $content);
         $this->assign('config', $config);
         $this->display();
     }
