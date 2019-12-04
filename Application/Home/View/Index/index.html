@@ -38,7 +38,6 @@
         if ((WEBQEUESTURL.indexOf('%3c') > 0 && WEBQEUESTURL.indexOf('%3e') > 0) || (WEBQEUESTURL.indexOf('<') > 0 && WEBQEUESTURL.indexOf('>') > 0)) {
             window.location.href = '/404.html';
         }
-        var WEB_ROOT = 'http://www.baofen998.com';
         $(function () {
             $("img.lazyload").lazyload({failure_limit: 100, effect: "fadeIn", skip_invisible: false, threshold: 200});
         });

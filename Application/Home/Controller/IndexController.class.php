@@ -28,6 +28,34 @@ class IndexController extends Controller
     }
 
     /**
+     * @desc : 查看文章
+     * @author: wangxiaoning@botpy.com
+     * @date  : 2019-12-04.15:57
+     */
+
+    public function item(){
+
+        $article = file_get_contents('http://140.143.224.94:8080/index.php/archives/4/');
+        $regex4="/<div class=\"post-content\".*?>.*?<\/div>/ism";
+
+
+        if(preg_match_all($regex4, $article, $matches)){
+            $article = $matches[0][0];
+        }else{
+            $article = '未能匹配到内容';
+        }
+
+        $config = [];
+        foreach ($this->show_type as $item){
+            $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
+        }
+
+        $this->assign('config', $config);
+        $this->assign('article',$article);
+        $this->display();
+    }
+
+    /**
      * @desc : 获取配置项目
      * @author: wangxiaoning@botpy.com
      * @date  : 2019-11-26.15:34
@@ -40,7 +68,7 @@ class IndexController extends Controller
             $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
         }
 
-        $content = M('contents')->select();
+        $content = M('contents')->where(['type' => 'post'])->select();
 
         foreach ($content as &$item){
             $item['url'] = 111;
