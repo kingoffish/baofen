@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)http://www.baofen998.com/teamview_4744920.html -->
+<!-- saved from url=(0043)http://www.baofen998.com/custom1829796.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,7 +12,23 @@
         .g-ft{width:100%;position:static;min-height:80px;background: url(http://cdn045.yun-img.com/static/upload/a00665y/focus/20170505103244_44114.png) repeat bottom;}
     </style>
     <script type="text/javascript" src="/static_files/1.js"></script>
+    <script type="text/javascript">
+        var WEBQEUESTURL = window.location.href.toLowerCase();
+        if((WEBQEUESTURL.indexOf('%3c')>0 && WEBQEUESTURL.indexOf('%3e')>0) || (WEBQEUESTURL.indexOf('<')>0 && WEBQEUESTURL.indexOf('>')>0)){
+            window.location.href = '/404.html';
+        }
+        $(function() {
+            $("img.lazyload").lazyload({failure_limit:100, effect:"fadeIn", skip_invisible:false, threshold:200});
+        });
+        /* 初始化宽度 */
+        var MainDocumentWidth = '1213';
+        if(MainDocumentWidth!=""){
+            if(MainDocumentWidth>$(window).width()){
+                $('.g-document').width(MainDocumentWidth);
+            }
+        }
 
+    </script>
     <!--[if lt IE 9]>
     <script src="/static/js/library/html5shiv/3.7.2/html5shiv.min.js?v=201504071709"></script>
     <![endif]-->
@@ -103,7 +119,14 @@
                     <div class="m-hd-headhtmlwrap" id="set_headhtml">
                         <div class="m-hd-headhtml" style="width:634px;height:61px;top:50px;left:265px;">
                             <div class="m-headhtml-ct"><p class="MsoNormal">
-                                <span style="font-family:宋体;font-size:16px;"><a href="http://www.baofen998.com/aofen998.website6534.yizhanwei.com/teamview_3721844.html" target="_blank">青柠3</a></span><span style="font-size:16px;"><a href="http://baofen998.website6534.yizhanwei.com/teamview_3721844.html" target="_blank">.0&nbsp;</a> |&nbsp;&nbsp;</span><a href="http://baofen998.website6534.yizhanwei.com/teamview_3672038.html" target="_blank"><span style="font-family:宋体;font-size:16px;">青柠</span><span style="font-size:16px;">V</span></a><span style="font-family:宋体;font-size:16px;"><a href="http://baofen998.website6534.yizhanwei.com/teamview_3672038.html" target="_blank">爆粉</a>&nbsp;</span><span style="font-size:16px;"> |&nbsp;&nbsp;</span><span style="font-size:16px;"><a href="http://baofen998.website6534.yizhanwei.com/teamview_3672012.html" target="_blank">蓝火焰二代</a>&nbsp; | <a href="http://baofen998.website6534.yizhanwei.com/teamview_3672452.html" target="_blank">安卓巅峰时代</a>&nbsp; |&nbsp; <a href="http://baofen998.website6534.yizhanwei.com/teamview_3673582.html" target="_blank">苹果魅影微商</a></span>
+                                <!--更新软件-->
+                                <?php foreach ($config['app']  as $key => $app) {?>
+                                <span style="font-family:宋体;font-size:16px;">
+                                        <a href="<?php echo $app['path'];?>" target="_blank"><?php echo $app['name_ch'];?></a> |
+
+                                    <!--                                        <?php if(count($config['app'] != $key)){echo "|";}?>-->
+                                    </span>
+                                <?php }?>
                             </p>
                                 <p class="MsoNormal">
                                     <b></b>
@@ -120,6 +143,36 @@
                     <div class="m-hd-top">
                         <!--是否显示整体注册条-->
                         <div class="m-head-regist">
+<!--						<span id="set_userbox">-->
+<!--															<a class="u-hd-btn" id="set_login" href="http://www.baofen998.com/custom1829796.html#" style="color:black;">登录&lt;!&ndash; 登录 &ndash;&gt;</a> | <a class="m-hd-btn" id="set_register" href="http://www.baofen998.com/custom1829796.html#" style="color:black;">注册&lt;!&ndash; 注册 &ndash;&gt;</a>-->
+<!--												</span>-->
+<!--                            <a class="u-hd-btn" href="http://www.baofen998.com/custom1829796.html#" id="set_startpage" style="color:black;">设为首页&lt;!&ndash; 设为首页 &ndash;&gt;</a>-->
+<!--                            <a class="u-hd-btn" href="http://www.baofen998.com/custom1829796.html#" id="set_favorite" style="color:black;">收藏本站&lt;!&ndash; 收藏本站 &ndash;&gt;</a>-->
+<!--                            <a class="u-hd-btn u-trans" href="http://www.baofen998.com/custom1829796.html#" id="set_translation" style="color:black;">简繁切换&lt;!&ndash; 简繁切换 &ndash;&gt;</a>-->
+<!--                            <div class="clearing"></div>-->
+                        </div>
+                        <div id="for_search">
+                            <style type="text/css">
+                                /*搜索框*/
+                                .m-search { margin-top: 20px; float: right; border:none;}
+                                .m-search .u-search-key {background: #fff; color: #999; float: none; font-size: 14px; height: 30px;width:px;  padding:0;}
+                                .m-search .u-search-btn { color: #fff; font-size: 14px; border: 0 none; height: 34px; overflow: hidden; width: 50px; float: right; cursor: pointer; text-indent: -99999px;margin-left: -2px;}
+
+
+                                /*默认 颜色*/
+                                .m-search .u-search-key { border: 2px solid #e8e8e8;  }
+                                .m-search .u-search-btn {  background: url(/static/img/searchimg/search1/soso_default.jpg) no-repeat center; }
+                                /*蓝色*/
+                                .m-search .u-search-key { border: 2px solid #3366ff;  }
+                                .m-search .u-search-btn {  background: url(/static/img/searchimg/search1/soso_blue.jpg) no-repeat center; }
+                            </style>
+                            <!--搜索框 开始 -->
+<!--                            <div id="set_search" class="m-search">-->
+<!--                                <input type="text" class="u-search-key" placeholder="请输入搜索内容" style="color: rgb(153, 153, 153);">-->
+<!--                                <input type="button" class="u-search-btn" value="搜索">-->
+<!--                            </div>-->
+                            <!--搜索框 结束 -->
+                        </div>
                     </div>
                     <div class="clearing"></div>
                 </div>
@@ -308,6 +361,7 @@
                                 <?php }?>
                             </ul>
 
+
                         </div>
 
                         <div style="clear:both"></div>
@@ -368,195 +422,58 @@
 
         <!-- 头部 end1 -->
         <!-- 拖拽980 -->
-    </header><link href="/static_files/white.css" rel="stylesheet" type="text/css">
-    <style>
-        .content{width: 1002px; margin:0 auto; padding: 25px; overflow: hidden; background: #fff;}
-        .mx_xp{width:747px;margin-top:20px;}
-        .mx_xp_ul{width:100%;height:46px;border-bottom:1px solid #e5e5e5;_overflow:hidden;}
-        .mx_xp_ul li{width:130px;height:45px;line-height:44px;border:1px solid #e5e5e5;float:left;text-align:center;cursor:pointer;font-size:16px;font-family:"宋体";background:#f6f6f6;color:#3c3c3c;border-bottom:none;}
-        .mx_xp_ul .none_left{border-left:none;}
-        .mx_xp_ul .active{background:#fff;color:#ff4400;border-top:2px solid #ff4400;position:relative;line-height:42px;}
-        .mx_xp_div{width:98%;display:none;padding:1%;}
-        .mx_xp_xq{display:block;font-size:14px;line-height:24px;letter-spacing:1px;}
-        .mx_xp_ping{font-size:14px;color:#333;}
-        .mx_xp_ping li{border-bottom:1px dashed #ccc;}
-        .mx_ping_t span,.mx_ping_b span{display:block;width:100%;height:30px;line-height:30px;color:#666;font-size:12px;}
-        .mx_ping_t i{font-style:normal;}
-        .mx_ping_b span{text-indent:10px;line-height:35px;}
-        .mx_ping_b p{color:#f60;padding:0 10px 10px;}
-        .mx_fenye{width:100%;text-align:center;height:30px;}
-        .mx_fenye a{width:50px;display:inline-block;color:#666;font-size:14px;height:30px;line-height:30px;text-align:center;}
-
-        .g-common {width:1000px;}
-        .m-view-crumb ul {width:1000px;}
-        .g-common .g-view-menu ul li {border-left: none;border-bottom: none;}
-        .m-view-detial img { display: inline-block;}
-        .m-view-list{display:none;}
-        .m-view-list textarea{width:736px;height:150px;border:1px solid #ccc;margin:10px 0;padding:3px 5px;font-size:14px;display:block;}
-        .m-view-list label{width:748px;height:32px;display:block;text-align:right;}
-        .m-view-list input{width:60px;height:30px;font-size:14px;color:#fff;cursor:pointer;}
-
-        .tit_comment{width:100%;height:31px;line-height:30px;font-size:16px;}
-        .tit_comment .com_con{ float: left; border-bottom: none; text-align: center; width: 80px; font-size: 14px; color:#696969; font-family:Verdana,Arial,Helvetica,sans-serif;}
-        .cmt_box{width:747px; }
-        .cmt_box .user{width:720px;margin:5px 0;color:#a2a2a2;line-height: 20px;font-size:12px;float: left;}
-        .cmt_box .user .uname{width:auto;display: block;float: left; padding:0 10px 0 10px;}
-        .cmt_box .user .time{width:200px;display: block;float: left;}
-        .cb{clear:both;}
-        .cmt_box .comment{margin:5px 5px 5px 10px ;word-break:break-all;color:#696969;line-height: 20px;font-size:12px;letter-spacing:1px; font-family:Verdana,Arial,Helvetica,sans-serif;}
-        .cmt_box .reply_c{color:#696969; font-family:Verdana,Arial,Helvetica,sans-serif; word-break:break-all;margin:5px 5px 5px 12px;width:710px;line-height: 20px;font-size:12px;float: left;}
-        .cmt_box .reply_t{color:#a6a4b2;width:670px;margin:5px 0;line-height: 20px;font-size:12px;float: left;}
-        .cmt_box .reply_t .r_ser{width:auto; display: block; float: left; padding: 0 10px;}
-        .cmt_box .bmt{margin:10px 0 10px 0;}
-        .cmt_box .pager{color:/*#a6a4b2;*/#606060;font-size:15px;margin:15px 0 0 0; text-align: right;}
-        .cmt_box .po{cursor: pointer;}
-        .cmt_box .de{cursor: default;color:#a6a4b2;}
+    </header><div class="g-main">
+    <script src="/static_files/scrollReveal.js"></script>
+    <script>
+        $(function(){
+            window.scrollReveal = new scrollReveal();
+        })
+    </script>
 
 
-        .securenotice{line-height:100px;color:#FF0000;text-align:center;}
-        .introzone{height:auto !important;}
-        .introzone a.u-zixun { width: 114px;margin-top:10px;display: inline-block; border-radius: 2px; text-decoration: none; cursor: auto; line-height: 44px; text-align: center; font-size: 16px; font-family: "microsoft yahei"; cursor: pointer;}
-        .introzone .pr_r{float: left; width: 318px; color: #000;font-size: 20px;font-weight: 600;  max-height: 50px;overflow: hidden;}
-        .introzone .pr_r1{float: left; width: 366px; color: #666;font-size: 13px;  height: 163px;overflow: hidden;}
-        .seat{padding:0px;margin:0px;height:22px;}
+    <!-- 公司简介模块 -->
+    <div class="m-wg m-default m-default-default" id="visualmodule_22" style="width:1190px;height:421px;">
+        <style type="text/css" class="m-wg-ct-style">#visualmodule_22 .m-wg-ct{font-family:inherit;}</style>	<div class="m-wg-ct">
+        <div class="m-theme11">
+            <?php echo $article;?>
+        </div>
+    </div>
+    </div>
+    <!-- 模块 end --><div class="m-wg m-default m-default-default" id="visualmodule_23" style="width:1195px;height:101px;">
+    <style type="text/css" class="m-wg-ct-style">#visualmodule_23 .m-wg-ct{font-family:inherit;}</style>	<div class="m-wg-ct">
 
-        /*左边产品中心*/
-        .pdv_warp{width: 240px;height: 54px;line-height: 54px;margin-top: 1px;}
-        .pdv_warp a{width:164px;height:54px;display: inline-block;margin-left: 38px;color: #fff;font-size: 18px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
-        .pdv_warp h3{height:54px;background: url(/static/img/team/product/theme2/p14-icon5.png) no-repeat right center; cursor: pointer;}
-        .product_name{width:182px ;line-height: 35px; font-size:14px; margin-top:5px;overflow: hidden;}
-        .productclass_dolphin .dolphin_warp{position: relative;}
-        .productclass_dolphin .jt-right{width: 16px; height: 20px;position: absolute;right: 10px;bottom: 17px;}
-        .productclass_dolphin {display: none;}
-        .pdv_title_con .cur{display: block ;}
-        /*产品案例*/
-        .pdv_content{ overflow: hidden;background: #fff;}
-        .pdv_content li{width: 222px;height: 76px;line-height:144px:display: inline-block;padding: 26px 10px 20px 8px ;border-bottom: 1px dashed #ccc;}
-        .pdv_content .content_img {width: 90px;height: 67px;display: inline-block;float: left;}
-        .pdv_content .content_img img{width: 90px;height: 67px;}
-        .pdv_content .content_text{width:118px;height:61px;display: inline-block;float: right;padding-left: 6px;padding-top: 6px;}
-        .pdv_content .content_text .text_title,.pdv_content .content_text .text_main{width:118px;height: 20px;line-height: 20px;font-size:14px;font-family:"微软雅黑";color:#666;text-overflow : ellipsis;white-space:nowrap;overflow:hidden }
-        .pdv_content .content_text .text_main{font-size: 12px;}
-        .pdv_iphone{width: 240px; height: 140px;margin-top:20px;background: url(/static/img/team/product/theme2/iphone_bg.png) no-repeat;position: relative;}
-        .pdv_iphone span{position: absolute;top: 74px;left: 74px;font-size: 16px; font-weight: 600;}
-
-        /*图片展示和内容外框*/
-        .pro_warp{min-height: 300px;width: 748px;}
+</div>
+</div> <!-- 商城中心模块 -->
 
 
-
-        /*电话和预约按钮*/
-        .iphone_button{width:365px; height:64px; margin-left:10px; overflow:hidden;}
-        .iphone_button a{float:right;}
-        .iphone_button .iphone{float: left;font-size: 18px;margin-top: 10px;}
-        .iphone_button .iphone img{width: 42px;height: 42px;display: inline-block;margin-right: 12px;}
-        .iphone_button  .iphone_number{width:160px;height:48px;display: inline-block;line-height: 24px;overflow: hidden;}
-
-
-        /*产品图片左右箭头*/
-        .piczone{position: relative;}
-        .piczone span{width: 24px;height:23px;display: block;cursor: pointer;}
-        .piczone span img{width: 24px;height: 23px;}
-        .piczone .jt-left{position: absolute;left: 0px;top: 50%;margin-top: -12px;}
-        .piczone .jt-right{position:absolute;right: 0px;top: 50%;margin-top: -12px;}
-        .piczone .jt-number{width:20px;height:20px;line-height:20px;text-align:center;color:#fff;position: absolute;right:10px;bottom:10px ;display: block;font-size: 15px;border-radius: 50%;}
-
-        .bodyzone ol,.bodyzone ul{padding-left:20px;}
-        .bodyzone ol li,.bodyzone ul li{list-style-type: inherit;}
-        .bodyzone img{vertical-align:top; max-width: 730px; max-height: 100%;}
-
-        /*屏蔽推广员推广普通产品*/
-        #fx_applypcss{display:none;}
-
-    </style>
-    <div class="g-common-outer">
-        <div id="content">
-            <div class="content">
-                <!-- 当前位置提示条 -->
-                <div id="pdv_16967" class="pdv_class" title="" style="width:100%;height:36px; z-index:1">
-                    <div id="spdv_16967" class="pdv_content" style="overflow:hidden;width:100%;height:100%">
-                        <div class="pdv_border seat">
-                            <link href="/static_files/nav.css" rel="stylesheet" type="text/css">
-                            <div id="nav">
-                                <!--<span class="nav_col">您现在的位置：</span>-->
-                                <a href="http://www.baofen998.com/" class="nav_col">
-                                    首页                            </a>
-                                <span>&gt;</span>
-                                <span><a class="nav_col" href="http://www.baofen998.com/product_564166.html">爆粉软件</a></span>
-                                <span>&gt;</span>
-                                <span style="color:#696969">微精灵3.18  无限制添加好友 群发好友</span>
-                            </div>
-                        </div>
+</div>
+</div> <div class="g-main-clear" style="clear:both"></div>
+</div>
+    <!-- 拖拽980 -->
+    <!-- 脚部 -->
+    <footer class="g-ft g-ft-edit">
+        <!-- 脚部980 -->
+        <div class="g-ft-inner">
+            <!-- 脚部自定义模块 -->
+            <div class="m-ft-foothtml">
+                <div id="set_foothtml"><br>
+                    <div style="text-align:center;">
+                        <?php echo $config['footer1'][0]['short_title']?>
                     </div>
-                </div>
-
-
-                <!-- 产品详情 -->
-                <div id="pdv_16971" class="pdv_class" style="width:750px;">
-                    <div id="spdv_16971" class="pdv_content" style="overflow:visible;width:100%;">
-                        <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px solid;background:;">
-                            <div style="height:25px;margin:1px;display:none;background:;">
-                                <div style="float:left;margin-left:6px;line-height:25px;font-weight:bold;color:">
-                                    产品详情
-                                </div>
-                                <div style="float:right;margin-right:10px;display:none">
-                                    <a href="http://www.baofen998.com/teamview_4744920.html#" style="line-height:25px;color:">更多</a>
-                                </div>
-                            </div>
-                            <div style="padding:0px">
-                                <link href="/static_files/productcontent.css" rel="stylesheet" type="text/css">
-                                <script type="text/javascript" src="/static_files/productcontent.js"></script>
-                                <div id="productcontent">
-                                    <div class="pro_warp">
-                                        <div class="introzone" style="margin-top:8px;">
-                                            <div id="prodtitle">
-<!--                                                标题-->
-                                                <div class="pr_r">微精灵3.18  无限制添加好友 群发好友<!--产品标题--></div>
-                                            </div>
-                                            <div id="memo" class="memo">
-<!--                                                内容-->
-                                                <div class="pr_r1"><strong><span style="font-size: 18px;">微精灵3.18 无限制添加好友 群发好友</span></strong><!--产品详情--></div>
-                                            </div>
-                                        </div>
-                                        <div style="clear:both;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div style="text-align:center;">
+                        <span style="line-height:1.5;color:#999999;">copyright © <?php echo $config['footer1'][1]['short_title']?></span>
                     </div>
-
-                    <div class="f-clear"></div>
                 </div>
             </div>
-
-
-            <script type="text/javascript" src="/static_files/comment.js"></script>
-            <script type="text/javascript" src="/static_files/com_two.js"></script>
-            <!-- 拖拽980 -->
-            <!-- 脚部 -->
-            <footer class="g-ft g-ft-edit">
-                <!-- 脚部980 -->
-                <div class="g-ft-inner">
-                    <!-- 脚部自定义模块 -->
-                    <div class="m-ft-foothtml">
-                        <div id="set_foothtml"><br>
-                            <div style="text-align:center;">
-                                <?php echo $config['footer1'][0]['short_title']?>
-                            </div>
-                            <div style="text-align:center;">
-                                <span style="line-height:1.5;color:#999999;">copyright © <?php echo $config['footer1'][1]['short_title']?></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 脚部980 end -->
-            </footer>
-            <!-- 脚部 end -->
         </div>
-        <!-- 拖拽JS -->
-        <!-- 脚部功能插件 -->
-        <!-- 底部插件注入区 -->
-        <center></center>
+        <!-- 脚部980 end -->
+    </footer>
+    <!-- 脚部 end -->
+</div>
+<!-- 拖拽JS -->
+<!-- 脚部功能插件 -->
+<!-- 底部插件注入区 -->
+<center></center>
 
-        <div id="set_trigger_login"></div>
-    </div></div></body></html>
+<div id="set_trigger_login"></div>
+</body></html>
