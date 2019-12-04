@@ -14,6 +14,7 @@ return array(
     'DB_PWD'    => 'BHjy6L2KNLJmKB3Y', // 密码
 
 
+
     'DB_PORT'   => 3306, // 端口
     'DB_PREFIX' => 'typecho_', // 数据库表前缀
     'DB_CHARSET'=> 'utf8', // 字符集
