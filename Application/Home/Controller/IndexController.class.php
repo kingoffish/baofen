@@ -105,7 +105,13 @@ class IndexController extends Controller
         $save['path'] = isset($_REQUEST['path']) ? $_REQUEST['path']:0;
         $save['image_path'] = isset($_REQUEST['image_path']) ? $_REQUEST['image_path']:0;
         $save['short_title'] = isset($_REQUEST['short_title']) ? $_REQUEST['short_title']:0;
+        $save['name_ch'] = isset($_REQUEST['name_ch']) ? $_REQUEST['name_ch']:0;
         $save['add_time'] = date("Y-m-d H:i:s");
+
+        foreach ($save as $key => $item){
+            if(empty($item)) unset($save[$key]);
+        }
+
         M('config')->where(['id'=>$id])->save($save);
     }
 }
