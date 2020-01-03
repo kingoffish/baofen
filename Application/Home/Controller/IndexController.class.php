@@ -12,7 +12,7 @@ class IndexController extends Controller
         ['type' => 'leimu','method' => 'select','field' => 'name_ch,path,id'],
         ['type' => 'index_image','method' => 'select','field' => 'path,image_path,name_ch,id'],
         ['type' => 'roll_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id'],
-        ['type' => 'f1_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id','limit' => 6],
+        ['type' => 'f1_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id','limit' => false],
         ['type' => 'footer1','method' => 'select','field' => 'path,image_path,short_title,name_ch,id','limit' => 6],
     ];
 
@@ -20,7 +20,14 @@ class IndexController extends Controller
     {
         $config = [];
         foreach ($this->show_type as $item){
-            $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
+            if($item['limit']){
+                $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit(6)->field($item['field'])->{$item['method']}();
+            }else{
+                $config[$item['type']] = M('config')->where([
+                    'type' => $item['type'],
+                    'short_title' => ['neq','']
+                ])->field($item['field'])->{$item['method']}();
+            }
 
             if(in_array($item['type'],['leimu','f1_article','roll_article','app'])){
                 foreach ($config[$item['type']] as &$_item){
