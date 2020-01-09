@@ -11,7 +11,7 @@ class IndexController extends Controller
         ['type' => 'app','method' => 'select','field' => 'name_ch,path,id'],
         ['type' => 'leimu','method' => 'select','field' => 'name_ch,path,id'],
         ['type' => 'index_image','method' => 'select','field' => 'path,image_path,name_ch,id'],
-        ['type' => 'roll_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id'],
+//        ['type' => 'roll_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id'],
         ['type' => 'f1_article','method' => 'select','field' => 'path,image_path,short_title,name_ch,id','limit' => false],
         ['type' => 'footer1','method' => 'select','field' => 'path,image_path,short_title,name_ch,id','limit' => 6],
     ];

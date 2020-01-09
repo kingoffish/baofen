@@ -738,6 +738,58 @@
                                 );
                             };
                         </script>   <!-- 头部980 end -->
+                        <script type="text/javascript">
+                            var SYSPAGEURL = window.location.pathname + window.location.search;
+                            if (SYSPAGEURL == '/index.html' || SYSPAGEURL == '/index.php' || SYSPAGEURL == '') {
+                                SYSPAGEURL = '/';
+                            }
+                            $(document).ready(function () {
+                                $('.m-newnav').levelmenu();
+
+                                $(".m-newnav .select").removeClass('select');
+                                $(".m-newnav a[href='" + SYSPAGEURL + "']").parent().addClass('select');
+                            });
+
+                            $.fn.levelmenu = function () {
+                                $(this).css('overflow', 'visible');
+                                $(this).css('z-index', '999');
+                                var overmax = false;
+                                var parent = this;
+                                $('>ul>li', this).each(function () {
+                                    if (overmax) {
+                                        $('<li>' + $(this).html() + '</li>').appendTo($('.more', parent));
+                                        $(this).remove();
+                                    } else {
+                                        if ($(this).next().length > 0) {
+                                            if ($(this).offset().left > $(this).next().offset().left) {
+                                                $('<li><a href="#">更多</a><ul class="more"></ul></li>').appendTo($(">ul", parent));
+                                                $('.more', parent).addClass('last');
+                                                $('<li>' + $(this).html() + '</li>').appendTo($('.more', parent));
+                                                $(this).remove();
+                                                overmax = true;
+                                            }
+                                        } else {
+                                            if ($(this).find('ul ul:first').length > 0) {
+                                                $(this).find('ul:first').addClass('last');
+                                            }
+                                        }
+                                    }
+                                });
+
+                                $("ul ul", this).css({display: "none"});
+                                $("ul li", this).hover(
+                                    function () {
+                                        $(this).addClass('select').find('div:first,ul:first').css({
+                                            visibility: "visible",
+                                            display: "none"
+                                        }).slideToggle(400);
+                                    }, function () {
+                                        $(this).removeClass('select').find('div:first,ul:first').css({visibility: "hidden"});
+                                        $(".m-newnav a[href='" + SYSPAGEURL + "']").parent().addClass('select');
+                                    }
+                                );
+                            };
+                        </script>   <!-- 头部980 end -->
                     </div>
                 </div>
             </div>
@@ -912,276 +964,7 @@
             })
         </script>
 
-        <!-- start -->
-        <div class="m-wg m-default m-default-default" id="visualmodule_61"
-             style="width:1200px;height:287px;float:left;border-style:solid;border-width:0px;border-color:#FFFFAC;margin-left:0px;margin-right:0px;margin-top:20px;margin-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
-            <div class="m-wg-ct">
-                <!-- 图片栏目 -->
-                <div class="picMarquee-left">
-                    <div class="m-theme205">
-                        <div class="clearing">&nbsp;</div>
 
-                        <div class="tempWrap" style="overflow:hidden; position:relative; width:1500px">
-                            <ul class="picList"
-                                style="width: 4800px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -553px;">
-                                <?php foreach ($config['roll_article']  as $app) {?>
-                                    <li class="clone" style="float: left; width: 300px;">
-                                        <div class="m-theme205-list">
-                                            <div class="m-theme205-img">
-                                                <a href="<?php echo $app['path']?>" target="_blank">
-                                                    <img src="/static_files/<?php echo $app['image_path'];?>" alt="<?php echo $app['short_title']?>">
-                                                </a>
-                                            </div>
-                                            <div class="m-theme205-title">
-                                                <a href="<?php echo $app['path']?>" target="_blank"><?php echo $app['short_title']?></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                <?php }?>
-                            </ul>
-                        </div>
-
-                        <div class="clearing">&nbsp;</div>
-                    </div>
-                </div>
-
-                <!-- 图片栏目 end -->
-                <script type="text/javascript">
-                    $(function () {
-                        $('.m-theme205-list').hover(function () {
-                            $(this).find($('.m-theme205-img')).css('border', '2px solid #ee5c5c');
-                            $(this).find($('.m-theme205-title a')).css('color', "#ee5c5c");
-                        }, function () {
-                            $('.m-theme205-img').css('border', '');
-                            $(this).find($('.m-theme205-title a')).css('color', "");
-                        })
-
-                        jQuery("#visualmodule_61 .picMarquee-left").slide({
-                            mainCell: ".m-theme205 ul",
-                            autoPlay: true,
-                            effect: "leftMarquee",
-                            vis: 5,
-                            interTime: 50
-                        });
-
-                    })
-                </script>
-            </div>
-
-        </div>
-
-        <!-- end -->
-        <div class="m-wg m-default m-default-default" id="visualmodule_91"
-             style="width:233px;height:241px;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
-            <div class="m-wg-ct" style="height:100%;">
-                <div id="mx_visualmodule_91" class="m-theme187">
-                    <ul class="box_ul">
-                        <li style="background: url(&quot;http://cdn063.yun-img.com/static/upload/baofen998/visualtoolkit/20180918230005_43512.png&quot;) center center no-repeat rgb(242, 242, 242); z-index: 3; opacity: 1; width: 100%; height: 100%; left: 0px; top: 0px;">
-                            <a href="http://baofen998.website6534.yizhanwei.com/teamview_3672013.html"
-                               target="_blank"></a>
-
-                        </li>
-                        <li style="background: url(&quot;http://cdn055.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225955_57404.png&quot;) center center no-repeat rgb(242, 242, 242); z-index: 2; width: 100%; height: 100%; left: 0px; top: 0px; opacity: 0;">
-                            <a href="http://baofen998.website6534.yizhanwei.com/teamview_3672022.html"
-                               target="_blank"></a>
-
-                        </li>
-                    </ul>
-                    <ol class="box_ol" style="margin-left: -17px;">
-                        <li class="active"></li>
-                        <li class=""></li>
-                    </ol>
-                    <a href="javascript:;" class="prev"></a>
-                    <a href="javascript:;" class="next"></a>
-                </div>
-                <script>
-                    (function ($) {
-                        var $box = $("#mx_visualmodule_91");
-                        var $ul = $box.find('.box_ul');
-                        var $ol = $box.find('.box_ol');
-                        var $ulLi = $ul.find('li');
-                        var $olLi = $ol.find('li');
-                        var $prev = $box.find('.prev');
-                        var $next = $box.find('.next');
-                        var iNow = 0;
-                        var iNow2 = 0;
-                        var timer = null;
-                        var bBtn = true;
-                        var liL = $ulLi.length;
-                        $ol.css('margin-left', -$ol.outerWidth() / 2);
-                        $olLi.on('click', function () {
-                            if (bBtn) {
-                                bBtn = false;
-                                iNow = $olLi.index($(this));
-                                tabs();
-                                iNow2 = iNow;
-                            }
-                        });
-
-                        function tabs() {
-                            if (iNow2 == iNow) {
-                                bBtn = true;
-                            } else {
-                                $olLi.removeClass('active').eq(iNow).addClass('active');
-                                $ulLi.css('z-index', 1).eq(iNow2).css('z-index', 2);
-                                $ulLi.eq(iNow).css({
-                                    width: 0,
-                                    height: 0,
-                                    left: '50%',
-                                    top: '50%',
-                                    opacity: 1,
-                                    zIndex: 3
-                                }).animate({width: '100%', height: '100%', left: 0, top: 0}, 400, function () {
-                                    $(this).siblings().css('opacity', 0);
-                                    bBtn = true;
-                                });
-                            }
-                        }
-
-                        function lesgo(obj) {
-                            if (bBtn) {
-                                bBtn = false;
-                                if (obj) {
-                                    iNow == 0 ? iNow = liL - 1 : iNow--;
-                                } else {
-                                    iNow == liL - 1 ? iNow = 0 : iNow++;
-                                }
-                                tabs();
-                                iNow2 = iNow;
-                            }
-                        }
-
-                        $prev.on('click', function () {
-                            lesgo(true);
-                        });
-                        $next.on('click', function () {
-                            lesgo(false);
-                        });
-                        timer = setInterval(lesgo, 5000, false);
-                        $box.hover(function () {
-                            clearInterval(timer);
-                            $prev.stop().animate({opacity: 1, left: 0}, 200);
-                            $next.stop().animate({opacity: 1, right: 0}, 200);
-                        }, function () {
-                            timer = setInterval(lesgo, 5000, false);
-                            $prev.stop().animate({opacity: 0, left: '-45px'}, 200);
-                            $next.stop().animate({opacity: 0, right: '-45px'}, 200);
-                        });
-                    })(jQuery);
-                </script>
-            </div>
-        </div><!-- 站点公告中心模块 -->
-        <div class="m-wg m-default m-default-default" id="visualmodule_92"
-             style="width:967px;height:121px;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
-            <div class="m-wg-ct">
-                <div class="m-theme28">
-                    <table style="width:100%;text-align:center;border-collapse:collapse;" border="0" cellspacing="0"
-                           cellpadding:
-                    "0"="" class="ke-zeroborder">
-                    <tbody>
-                    <tr>
-                        <td colspan="2">
-                            <div>
-                                <a href="http://www.baofen998.com/custom1156737.html" target="_blank"></a><a
-                                    href="http://baofen998.website6534.yizhanwei.com/teamview_3672012.html"
-                                    target="_blank"><img class="lazyload"
-                                                         data-original="http://cdn045.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225448_38653.png"
-                                                         alt="" src="/static_files/20180918225448_38653.png"
-                                                         style="display: inline;"></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <a href="http://www.baofen998.com/custom1156740.html" target="_blank"></a><a
-                                    href="http://baofen998.website6534.yizhanwei.com/teamview_3672498.html"
-                                    target="_blank"><img class="lazyload"
-                                                         data-original="http://cdn037.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225503_44156.png"
-                                                         alt="" src="/static_files/20180918225503_44156.png"
-                                                         style="display: inline;"></a>
-                            </div>
-                        </td>
-                        <td style="background-image:url(http://cdn053.yun-img.com/static/upload/a00690t/visualtoolkit/20171130171937_79424.jpg);line-height:24px;color:#fff;"
-                            width="242" height="120" align="center">
-                            <a href="http://baofen998.website6534.yizhanwei.com/teamview_3673582.html"
-                               target="_blank"><img class="lazyload"
-                                                    data-original="http://cdn055.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225536_27031.png"
-                                                    alt="" src="/static_files/20180918225536_27031.png"
-                                                    style="display: inline;"></a><br>
-                        </td>
-                    </tr>
-                    </tbody>
-                    </table></div>
-            </div>
-        </div>
-        <!-- 模块 end  duangou-->
-        <!-- 站点公告中心模块 -->
-        <div class="m-wg m-default m-default-default" id="visualmodule_60"
-             style="width:967px;height:120px;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
-            <div class="m-wg-ct">
-                <div class="m-theme28">
-                    <table style="width:100%;text-align:center;border-collapse:collapse;" border="0" cellspacing="0"
-                           cellpadding:
-                    "0"="" class="ke-zeroborder">
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <a href="http://www.baofen998.com/custom1156740.html" target="_blank"></a><a
-                                    href="http://baofen998.website6534.yizhanwei.com/teamview_3675664.html"
-                                    target="_blank"><img class="lazyload"
-                                                         data-original="http://cdn055.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225613_77573.png"
-                                                         alt="" src="/static_files/20180918225613_77573.png"
-                                                         style="display: inline;"></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <a href="http://www.baofen998.com/custom1156741.html" target="_blank"></a><a
-                                    href="http://baofen998.website6534.yizhanwei.com/teamview_3673604.html"
-                                    target="_blank"><img class="lazyload"
-                                                         data-original="http://cdn035.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225628_26720.png"
-                                                         alt="" src="/static_files/20180918225628_26720.png"
-                                                         style="display: inline;"></a>
-                            </div>
-                        </td>
-                        <td colspan="2">
-                            <div>
-                                <a href="http://www.baofen998.com/custom1156735.html" target="_blank"></a><a
-                                    href="http://baofen998.website6534.yizhanwei.com/teamview_3672452.html"
-                                    target="_blank"><img class="lazyload"
-                                                         data-original="http://cdn045.yun-img.com/static/upload/baofen998/visualtoolkit/20180918225640_89802.png"
-                                                         alt="" src="/static_files/20180918225640_89802.png"
-                                                         style="display: inline;"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                    </table></div>
-            </div>
-        </div>
-        <!-- 模块 end  duangou-->
-        <div class="m-wg m-default m-default-default" id="visualmodule_130" style="width:1190px;height:99px;">
-            <div class="m-wg-ct">
-                <div class="m-theme21-img">
-                    <a target="_blank" href="http://baofen998.website6534.yizhanwei.com/custom1829795.html">
-                        <img class="lazyload"
-                             data-original="http://cdn047.yun-img.com/static/upload/baofen998/visualtoolkit/20180918231228_74859.png"
-                             alt="" src="/static_files/20180918231228_74859.png" style="display: inline;">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="m-wg m-default m-default-default" id="visualmodule_131" style="width:1190px;height:267px;">
-            <div class="m-wg-ct">
-                <div class="m-theme21-img">
-                    <a href="javascript:void(0);" style="cursor: default">
-                        <img class="lazyload"
-                             data-original="http://cdn047.yun-img.com/static/upload/baofen998/visualtoolkit/20181231225952_40688.png"
-                             alt="" src="/static_files/20181231225952_40688.png" style="display: inline;">
-                    </a>
-                </div>
-            </div>
-        </div>
         <div class="m-wg m-default m-default-default" id="visualmodule_95"
              style="width:1200px;height:47px;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:0px;margin-right:0px;margin-top:20px;margin-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
             <div class="m-wg-ct">
