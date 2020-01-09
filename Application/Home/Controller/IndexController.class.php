@@ -85,7 +85,7 @@ class IndexController extends Controller
     {
         $config = [];
         foreach ($this->show_type as $item){
-            $limit = ($item['type'] == 'f1_article') ? false:6;
+            $limit = isset($item['limit']) ? $item['limit'] : false;
             $config[$item['type']] = M('config')->where(['type' => $item['type']])->limit($limit)->field($item['field'])->{$item['method']}();
         }
 
